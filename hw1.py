@@ -29,7 +29,10 @@ def poland_cases_by_date(day: int, month: int, year: int = 2020) -> int:
     """
     
     # Your code goes here (remove pass)
-    pass
+    def poland_cases_by_date(d, m , year: int = 2020):
+      data = f'{m}/{d}/20'
+      pl = confirmed_cases.loc[confirmed_cases['Country/Region'] == 'Poland', :]
+      return pl[data]
 
 
 def top5_countries_by_date(day: int, month: int, year: int = 2020) -> List[str]:
@@ -49,7 +52,10 @@ def top5_countries_by_date(day: int, month: int, year: int = 2020) -> List[str]:
     """
 
     # Your code goes here (remove pass)
-    pass
+    def top5_countries_by_date(day: int, month: int, year: int = 2020):
+      data = f'{month}/{day}/20'
+      nowe = confirmed_cases.groupby("Country/Region").sum()[[data]].sort_values(by =  data, ascending = False).head(5)
+      return [nowe.index[0], nowe.index[1], nowe.index[2], nowe.index[3], nowe.index[4]]
 
 # Function name is wrong, read the pydoc
 def no_new_cases_count(day: int, month: int, year: int = 2020) -> int:
